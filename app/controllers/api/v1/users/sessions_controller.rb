@@ -9,7 +9,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
   def create
 
     user = User.find_by_email(params[:user][:email])
-
+    puts "\n\n\n#{user&.id}"
     if user && user.valid_password?(params[:user][:password])
       token = user.generate_jwt
       render json:
